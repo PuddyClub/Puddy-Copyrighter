@@ -36,7 +36,7 @@ contract PuddyCopyrighter {
 
         // Validate
         require(address(msg.sender) == address(owner), "You are not allowed to do this.");
-        require(keccak256(abi.encode(ipfs[_index])) != keccak256(abi.encode("")), "This storage has already been used.");
+        require(keccak256(abi.encode(ipfs[_index])) == keccak256(abi.encode("")), "This storage has already been used.");
 
         // Complete
         ipfs[_index] = _value;
