@@ -21,7 +21,8 @@ contract PuddyCopyrighter {
         return owner;
     }
 
-    function transferOwnership(address newOwner) internal {
+    function transferOwnership(address newOwner) public {
+        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
         require(newOwner != address(0), "New owner is the zero address");
         emit OwnershipTransferred(owner, newOwner);
         owner = payable(newOwner);
